@@ -17,7 +17,6 @@ export default () => {
       .then(response => response.json())
       .then(data => {
         console.log(data)
-
         setVideos(data.items.map(document => ({
           creator: document.creator,
           song: document.title,

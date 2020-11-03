@@ -2,7 +2,7 @@ import React from 'react';
 import {gql, useQuery} from '@apollo/client';
 import {useParams} from 'react-router-dom';
 
-const userProfileQuery = gql`query documents($filter: String!){
+const userProfileQuery = gql`query documents($filter: String){
   documents(siteKey: "Guest", filter: $filter) {
     items {
       creator {
@@ -17,7 +17,11 @@ const userProfileQuery = gql`query documents($filter: String!){
 
 export default () => {
 
+  console.log("userProfileQuery",userProfileQuery);
+
   const {creatorId} = useParams();
+
+  console.log("creatorId",creatorId);
 
   const {loading, data} = useQuery(userProfileQuery, {
     variables: {
@@ -25,7 +29,7 @@ export default () => {
     }
   });
 
-  console.log(data)
+  console.log("data",data)
 
   return (
     <div className="video">{
