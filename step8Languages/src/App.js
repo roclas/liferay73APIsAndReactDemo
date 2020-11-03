@@ -13,7 +13,7 @@ export default () => {
 
   useEffect(() => {
 
-    const endpoint = new URL('http://localhost:8080/o/headless-delivery/v1.0/asset-libraries/AnotherAsset/content-elements');
+    const endpoint = new URL('http://localhost:8080/o/headless-delivery/v1.0/asset-libraries/45673/content-elements');
 
     endpoint.searchParams.append('nestedFields', 'contentValue');
     endpoint.searchParams.append("filter", "keywords/any(k:k eq 'tiktok')");
