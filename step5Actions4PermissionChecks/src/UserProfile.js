@@ -34,7 +34,7 @@ export default () => {
   return (
     <div className="video">{
       data && data.documents && data.documents.items.map(document => (
-        <video style={{width:"33%"}}
+        <video key={document.contentUrl} style={{width:"33%"}}
           src={'http://localhost:8080/' + document.contentUrl}
         />
       ))

@@ -21,15 +21,19 @@ export default () => {
     fetch(endpoint, {headers: {"Authorization": "Basic "+b64, "X-Accept-All-Languages": true}})
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+	console.log("data",data)
+	console.log("current lang",window.navigator.language)
 
-	if(data.items)setVideos(data.items.map(({content: document}) => ({
+	if(data.items)setVideos(data.items.map(({title_i18n:ti18n,content: document}) => {
+	  console.log("title_i18n",ti18n);
+	  return ({
           creator: document.creator,
           remove: document.actions.delete,
-          song: document.title_i18n ? document.title_i18n[window.navigator.language] : document.title,
+          //song: document.title_i18n ? document.title_i18n[window.navigator.language] : "non translated title",
+          song: ti18n ? ti18n["en-US"] : "non translated title",
           description: document.description,
           url: document.contentValue ? ('data:video/mp4;base64,' +  document.contentValue) : 'http://localhost:8080/' + document.contentFields[0].contentFieldValue.document.contentUrl
-        })));
+        })}));
       })
   }, [])
 

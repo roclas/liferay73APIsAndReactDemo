@@ -17,10 +17,11 @@ export default () => {
 
     endpoint.searchParams.append('nestedFields', 'contentValue');
 
-    fetch(endpoint, {headers: {"Authorization": "Basic "+b64}})
+    //fetch(endpoint, {headers: {"Authorization": "Basic "+b64}})
+    fetch(endpoint, {})
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        console.log("data",data)
 
         setVideos(data.items.map(document => ({
           creator: document.creator,

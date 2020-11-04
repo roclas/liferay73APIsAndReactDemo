@@ -13,10 +13,12 @@ export default () => {
 
   useEffect(() => {
 
-    fetch('http://localhost:8080/o/headless-delivery/v1.0/sites/Guest/documents', {headers: {"Authorization": "Basic "+b64}})
+    fetch('http://localhost:8080/o/headless-delivery/v1.0/sites/Guest/documents', 
+	{headers: {"Authorization": "Basic "+b64}})
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        console.log("data",data)
+
         setVideos(data.items.map(document => ({
           creator: document.creator,
           song: document.title,

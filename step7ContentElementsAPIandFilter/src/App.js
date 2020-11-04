@@ -21,7 +21,7 @@ export default () => {
     fetch(endpoint, {headers: {"Authorization": "Basic "+b64}})
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        console.log("data",data)
 
 	if(data.items){ 
 		console.log("data.items",data.items);

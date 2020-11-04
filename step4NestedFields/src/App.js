@@ -13,14 +13,15 @@ export default () => {
 
   useEffect(() => {
 
-    const endpoint = new URL('http://localhost:8080/o/headless-delivery/v1.0/sites/Guest/documents');
+     const endpoint = new URL('http://localhost:8080/o/headless-delivery/v1.0/sites/Guest/documents');
 
     endpoint.searchParams.append('nestedFields', 'contentValue');
 
+    console.log("endpoint",endpoint);
     fetch(endpoint, {headers: {"Authorization": "Basic "+b64}})
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        console.log("data",data)
 
         setVideos(data.items.map(document => ({
           creator: document.creator,
