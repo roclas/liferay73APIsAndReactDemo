@@ -17,8 +17,8 @@ export default () => {
 
     endpoint.searchParams.append('nestedFields', 'contentValue');
 
-    //fetch(endpoint, {headers: {"Authorization": "Basic "+b64}})
-    fetch(endpoint, {})
+    fetch(endpoint, {headers: {"Authorization": "Basic "+b64}})
+    //fetch(endpoint, {})
       .then(response => response.json())
       .then(data => {
         console.log("data",data)
